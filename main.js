@@ -201,7 +201,7 @@ function updateActive() {
 				nextLabel = next ? next.b : ""
 			}
 			periodEl.textContent = label
-			untilEl.textContent = nextLabel ? ("until " + nextLabel) : ""
+			untilEl.textContent = nextLabel ? ("until " + nextLabel + " (" + next.start.toLocaleTimeString() + ")") : ""
 			const timeleft = getTimeLeft(active)
 			if (timeleft) {
 				timeleftEl.textContent = timeleft.minutes + "m " + timeleft.seconds + "s"
