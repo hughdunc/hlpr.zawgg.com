@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>WLHS Bus Map | Optimized</title>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');</style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f1f5f9;
+            --text-sub: #94a3b8;
+            --font-family: 'Outfit', sans-serif;
+        }
+
+        body { margin: 0; padding: 0; display: flex; font-family: var(--font-family); height: 100vh; overflow: hidden; background: var(--bg-dark); color: var(--text-main); }
+        #map { flex-grow: 1; height: 100%; z-index: 1; background: #000; }
+
+        /* Sidebar - Locked Width */
+        #sidebar { 
+            width: 340px; min-width: 340px; max-width: 340px; 
+            background: var(--bg-dark); display: flex; flex-direction: column; 
+            border-right: 1px solid #334155; z-index: 3000; transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #menuBtn {
+            position: absolute; top: 15px; left: 15px; z-index: 4000;
+            background: var(--bg-card); border: 1px solid #334155; border-radius: 12px; 
+            width: 48px; height: 48px; display: none;
+            flex-direction: column; justify-content: center; align-items: center; gap: 4px;
+            cursor: pointer;
+        }
+        .bar { width: 20px; height: 2px; background-color: white; border-radius: 2px; }
+
+        @media (max-width: 768px) {
+            #sidebar { position: absolute; left: 0; top: 0; bottom: 0; width: 85%; max-width: 340px; transform: translateX(-100%); }
+            #sidebar.open { transform: translateX(0); }
+            #menuBtn { display: flex; }
+        }
+
+        .sidebar-header-area { flex-shrink: 0; padding: 24px 20px; background: var(--bg-dark); }
+        .app-title { font-size: 24px; font-weight: 700; color: white; display: block; margin-bottom: 20px; }
+        .close-sidebar { display: none; font-size: 28px; color: var(--text-sub); cursor: pointer; float: right; }
+        @media (max-width: 768px) { .close-sidebar { display: block; } }
+
+        /* Search Bar */
+        .search-wrapper { position: relative; width: 100%; box-sizing: border-box; }
+        #addressSearch { 
+            width: 100%; padding: 14px 40px 14px 15px; box-sizing: border-box;
+            border: 1px solid #334155; background: var(--bg-card);
+            border-radius: 12px; outline: none; font-size: 15px; color: white; font-family: inherit;
+        }
+        #clearSearch { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: var(--text-sub); display: none; font-size: 20px; }
+
+        #suggestions {
+            position: absolute; top: 58px; left: 0; right: 0;
+            background: var(--bg-card); border-radius: 12px; border: 1px solid #334155;
+            z-index: 4000; display: none; max-height: 320px; overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        .suggestion-item { padding: 12px 15px; border-bottom: 1px solid #334155; cursor: pointer; }
+        .suggestion-item:hover { background: #2d3a4f; }
+        .suggestion-item .b-name { font-weight: 600; font-size: 14px; color: white; display: block; }
+        .suggestion-item .b-addr { font-size: 11px; color: var(--text-sub); margin-top: 3px; display: block; line-height: 1.4; }
+
+        #routeList { overflow-y: auto; flex-grow: 1; padding: 0 20px 20px 20px; }
+        .route-item { padding: 16px; margin-bottom: 12px; border-radius: 14px; background: var(--bg-card); border: 1px solid #334155; cursor: pointer; }
+        .route-item.active { background: var(--primary); border-color: var(--primary); }
+
+        /* CIRCLE DOT FIX */
+        .pin { 
+            width: 26px !important; height: 26px !important; border-radius: 50% !important; 
+            display: flex !important; align-items: center !important; justify-content: center !important; 
+            color: white !important; font-weight: 700 !important; border: 2px solid white !important; 
+            font-size: 11px !important; box-shadow: 0 0 8px rgba(0,0,0,0.5) !important;
+        }
+        .search-pin { width: 18px !important; height: 18px !important; background: #3b82f6 !important; border: 3px solid white !important; border-radius: 50% !important; box-shadow: 0 0 15px #3b82f6 !important; }
+
+        .leaflet-popup-content-wrapper { background: var(--bg-card) !important; color: white !important; border-radius: 12px !important; font-family: 'Outfit', sans-serif !important; }
+        .leaflet-popup-tip { background: var(--bg-card) !important; }
+    </style>
+</head>
+<body>
+
+<button id="menuBtn" onclick="toggleSidebar()"><div class="bar"></div><div class="bar"></div><div class="bar"></div></button>
+
+<div id="sidebar">
+    <div class="sidebar-header-area">
+        <span class="close-sidebar" onclick="toggleSidebar()">&times;</span>
+        <span class="app-title">WLHS Bus Map</span>
+        <p>Entirely vibe coded. Stops may not be accurate.</p>
+        <div class="search-wrapper">
+            <input type="text" id="addressSearch" placeholder="Search West Linn..." autocomplete="off">
+            <span id="clearSearch" onclick="clearInput()">&times;</span>
+            <div id="suggestions"></div>
+        </div>
+    </div>
+    <div id="routeList"></div>
+</div>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    const map = L.map('map', { zoomControl: false }).setView([45.365, -122.612], 13);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
+
+    const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4', '#fb7185'];
+    let routeLayers = {}; 
+    let currentActiveId = null;
+
+    function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+
+    const searchMarker = L.marker([0,0], {
+        icon: L.divIcon({ className: 'custom-div-icon', html: '<div class="search-pin"></div>', iconSize: [24, 24], iconAnchor: [12, 12] })
+    }).addTo(map);
+
+    const searchInput = document.getElementById('addressSearch');
+    const suggBox = document.getElementById('suggestions');
+    const clearBtn = document.getElementById('clearSearch');
+
+    function clearInput() {
+        searchInput.value = '';
+        clearBtn.style.display = 'none';
+        suggBox.style.display = 'none';
+        searchMarker.setLatLng([0,0]);
+    }
+
+    searchInput.addEventListener('input', async (e) => {
+        const val = e.target.value;
+        clearBtn.style.display = val.length > 0 ? 'block' : 'none';
+        if (val.length < 2) { suggBox.style.display = 'none'; return; }
+
+        const url = `https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?f=json&singleLine=${encodeURIComponent(val)}&location=-122.612,45.365&distance=12000&maxLocations=6&outFields=PlaceName,Address,LongLabel`;
+        
+        try {
+            const resp = await fetch(url);
+            const data = await resp.json();
+            suggBox.innerHTML = '';
+            if (data.candidates) {
+                suggBox.style.display = 'block';
+                data.candidates.forEach(cand => {
+                    const item = document.createElement('div');
+                    item.className = 'suggestion-item';
+                    const bName = cand.attributes.PlaceName || "";
+                    const fAddr = cand.attributes.LongLabel || cand.address;
+                    let dName = bName ? bName : cand.address;
+                    let dSub = bName ? fAddr : "West Linn Area";
+                    item.innerHTML = `<span class="b-name">${dName}</span><span class="b-addr">${dSub}</span>`;
+                    item.onclick = () => {
+                        const pos = [cand.location.y, cand.location.x];
+                        searchMarker.setLatLng(pos).bindPopup(`<b>${dName}</b><br>${fAddr}`).openPopup();
+                        map.setView(pos, 17);
+                        suggBox.style.display = 'none';
+                        searchInput.value = dName;
+                        if (window.innerWidth <= 768) toggleSidebar();
+                    };
+                    suggBox.appendChild(item);
+                });
+            }
+        } catch (err) {}
+    });
+
+    async function init() {
+        try {
+            // UPDATED: Now reading from your exported file with coordinates
+            const resp = await fetch('bus_routes_with_coords.json');
+            const routeData = await resp.json();
+            const listContainer = document.getElementById('routeList');
+
+            routeData.forEach((route, idx) => {
+                const color = colors[idx % colors.length];
+                const layerGroup = L.featureGroup().addTo(map);
+                const latlngs = [];
+
+                const div = document.createElement('div');
+                div.className = 'route-item';
+                div.innerHTML = `<span style="font-weight:600;">${route.name}</span><br><span style="font-size:12px; color:var(--text-sub);">${route.stops.length} Stops</span>`;
+                div.onclick = () => { toggleRoute(route.id); if (window.innerWidth <= 768) toggleSidebar(); };
+                listContainer.appendChild(div);
+
+                route.stops.forEach(stop => {
+                    if (stop.coordinates) {
+                        const pos = [stop.coordinates.lat, stop.coordinates.lng];
+                        latlngs.push(pos);
+                        L.marker(pos, {
+                            icon: L.divIcon({ className: 'stop-icon', html: `<div class="pin" style="background:${color}">${stop.stop_number}</div>`, iconSize: [26, 26], iconAnchor: [13, 13] })
+                        }).addTo(layerGroup).bindPopup(`<b>Stop #${stop.stop_number}</b><br>${stop.address}<br>Time: ${stop.time}`);
+                    }
+                });
+
+                if (latlngs.length > 0) {
+                    L.polyline(latlngs, {color: color, weight: 6, opacity: 0.6}).addTo(layerGroup);
+                    routeLayers[route.id] = { group: layerGroup, item: div };
+                }
+            });
+        } catch (err) { console.error("Error loading JSON:", err); }
+    }
+
+    function toggleRoute(routeId) {
+        if (currentActiveId === routeId) { resetMap(); currentActiveId = null; return; }
+        currentActiveId = routeId;
+        Object.keys(routeLayers).forEach(id => {
+            const layer = routeLayers[id];
+            const isMatch = (id === routeId);
+            layer.group.eachLayer(l => { 
+                if(l.setOpacity) l.setOpacity(isMatch ? 1 : 0.05); 
+                if(l.setStyle) l.setStyle({opacity: isMatch ? 1 : 0.05}); 
+            });
+            layer.item.classList.toggle('active', isMatch);
+            if (isMatch) map.fitBounds(layer.group.getBounds().pad(0.3));
+        });
+    }
+
+    function resetMap() {
+        Object.keys(routeLayers).forEach(id => {
+            const layer = routeLayers[id];
+            layer.group.eachLayer(l => { if(l.setOpacity) l.setOpacity(1); if(l.setStyle) l.setStyle({opacity: 0.6}); });
+            layer.item.classList.remove('active');
+        });
+    }
+
+    document.addEventListener('click', (e) => { if (!e.target.closest('.search-wrapper')) suggBox.style.display = 'none'; });
+    init();
+</script>
+</body>
+</html>
