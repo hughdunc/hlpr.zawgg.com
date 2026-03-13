@@ -1,0 +1,1652 @@
+[
+  {
+    "id": "route-212",
+    "name": "Bus 212",
+    "stops": [
+      {
+        "stop_number": 1,
+        "time": "3:23 pm",
+        "address": "FALCON DR & CARSON DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.355083004271,
+          "lng": -122.65173202504
+        }
+      },
+      {
+        "stop_number": 2,
+        "time": "3:25 pm",
+        "address": "CRESTVIEW DR & ALPINE DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.357472014314,
+          "lng": -122.654501992583
+        }
+      },
+      {
+        "stop_number": 3,
+        "time": "3:28 pm",
+        "address": "KILLARNEY DR & TIPPERARY CT, West Linn, OR",
+        "coordinates": {
+          "lat": 45.356454996092,
+          "lng": -122.657433982313
+        }
+      },
+      {
+        "stop_number": 4,
+        "time": "3:30 pm",
+        "address": "KILLARNEY DR & LIMERICK LN, West Linn, OR",
+        "coordinates": {
+          "lat": 45.356524984984,
+          "lng": -122.658257001386
+        }
+      },
+      {
+        "stop_number": 5,
+        "time": "3:31 pm",
+        "address": "KILLARNEY DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.359416050072,
+          "lng": -122.656050591104
+        }
+      }
+    ]
+  },
+  {
+    "id": "route-215",
+    "name": "Bus 215",
+    "stops": [
+      {
+        "stop_number": 1,
+        "time": "3:22 pm",
+        "address": "HIDDEN SPRINGS RD & SUNCREST DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.376996987209,
+          "lng": -122.65407200095
+        }
+      },
+      {
+        "stop_number": 2,
+        "time": "3:23 pm",
+        "address": "SUNCREST DR & DERBY ST, West Linn, OR",
+        "coordinates": {
+          "lat": 45.37968401582,
+          "lng": -122.654856966182
+        }
+      },
+      {
+        "stop_number": 3,
+        "time": "3:25 pm",
+        "address": "DEANA DR & BENNINGTON CT, West Linn, OR",
+        "coordinates": {
+          "lat": 45.380718007395,
+          "lng": -122.657574965925
+        }
+      },
+      {
+        "stop_number": 4,
+        "time": "3:27 pm",
+        "address": "CARRIAGE WY No Intersection, West Linn, OR",
+        "coordinates": {
+          "lat": 45.377609997698,
+          "lng": -122.645527488853
+        }
+      }
+    ]
+  },
+  {
+    "id": "route-216",
+    "name": "Bus 216",
+    "stops": [
+      {
+        "stop_number": 1,
+        "time": "3:29 pm",
+        "address": "SW 46TH AVE&SW NATCHEZ ST, West Linn, OR",
+        "coordinates": {
+          "lat": 45.380216979133,
+          "lng": -122.724834039214
+        }
+      },
+      {
+        "stop_number": 2,
+        "time": "3:31 pm",
+        "address": "SW 48TH AVE & SW SAUM WAY, West Linn, OR",
+        "coordinates": {
+          "lat": 45.375774989545,
+          "lng": -122.726431965235
+        }
+      },
+      {
+        "stop_number": 3,
+        "time": "3:34 pm",
+        "address": "5185 SW PROSPERITY PARK RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.371371389074,
+          "lng": -122.732004673561
+        }
+      },
+      {
+        "stop_number": 4,
+        "time": "3:37 pm",
+        "address": "6250/6251 SW PROSPERITY PARK RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.369477162775,
+          "lng": -122.739881064156
+        }
+      },
+      {
+        "stop_number": 5,
+        "time": "3:37 pm",
+        "address": "6285 SW PROSPERITY PARK RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.370479889852,
+          "lng": -122.741012034351
+        }
+      }
+    ]
+  },
+  {
+    "id": "route-218",
+    "name": "Bus 218",
+    "stops": [
+      {
+        "stop_number": 1,
+        "time": "3:34 pm",
+        "address": "19830 SW STAFFORD RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.378246770882,
+          "lng": -122.698934126039
+        }
+      },
+      {
+        "stop_number": 2,
+        "time": "3:35 pm",
+        "address": "SW STAFFORD RD & SW SHADOW WOOD DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.380598607185,
+          "lng": -122.697274509211
+        }
+      },
+      {
+        "stop_number": 3,
+        "time": "3:36 pm",
+        "address": "1961 SW MOSSY BRAE RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.381463912959,
+          "lng": -122.69691014788
+        }
+      },
+      {
+        "stop_number": 4,
+        "time": "3:40 pm",
+        "address": "1400 SW BORLAND RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.361029042565,
+          "lng": -122.691615551101
+        }
+      },
+      {
+        "stop_number": 5,
+        "time": "3:41 pm",
+        "address": "SW BORLAND RD & SW BOSKY DELL LN, West Linn, OR",
+        "coordinates": {
+          "lat": 45.353138989468,
+          "lng": -122.679770999905
+        }
+      },
+      {
+        "stop_number": 6,
+        "time": "3:45 pm",
+        "address": "1730/1733 SW TURNER RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.359382208138,
+          "lng": -122.69380230582
+        }
+      },
+      {
+        "stop_number": 7,
+        "time": "3:50 pm",
+        "address": "SW TRAIL RD & SW WYNDHAM HILL CT, West Linn, OR",
+        "coordinates": {
+          "lat": 45.365447981919,
+          "lng": -122.712589000684
+        }
+      },
+      {
+        "stop_number": 8,
+        "time": "3:50 pm",
+        "address": "SW TRAIL RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.365488508421,
+          "lng": -122.709434513333
+        }
+      }
+    ]
+  },
+  {
+    "id": "route-220",
+    "name": "Bus 220",
+    "stops": [
+      {
+        "stop_number": 1,
+        "time": "3:22 pm",
+        "address": "DEBOK RD & SUMMERLINN DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.353377999437,
+          "lng": -122.659895998733
+        }
+      },
+      {
+        "stop_number": 2,
+        "time": "3:25 pm",
+        "address": "DEBOK RD & TAMARISK DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.358737011141,
+          "lng": -122.661300973343
+        }
+      },
+      {
+        "stop_number": 3,
+        "time": "3:30 pm",
+        "address": "22764 SW JOHNSON RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.361052721441,
+          "lng": -122.675097166875
+        }
+      },
+      {
+        "stop_number": 4,
+        "time": "3:34 pm",
+        "address": "SW ASHDOWN CIR & SW VICTORIA PL, West Linn, OR",
+        "coordinates": {
+          "lat": 45.371898987969,
+          "lng": -122.682102007178
+        }
+      },
+      {
+        "stop_number": 5,
+        "time": "3:36 pm",
+        "address": "21625-21645 SW JOHNSON RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.368047084365,
+          "lng": -122.687009946763
+        }
+      },
+      {
+        "stop_number": 6,
+        "time": "3:37 pm",
+        "address": "22675 SW JOHNSON RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.360934536607,
+          "lng": -122.68277272707
+        }
+      },
+      {
+        "stop_number": 7,
+        "time": "3:40 pm",
+        "address": "JOHNSON RD & MEADOW VIEW CT, West Linn, OR",
+        "coordinates": {
+          "lat": 45.35482601512,
+          "lng": -122.66562100624
+        }
+      },
+      {
+        "stop_number": 8,
+        "time": "3:40 pm",
+        "address": "JOHNSON RD & RYAN CT, West Linn, OR",
+        "coordinates": {
+          "lat": 45.353961002712,
+          "lng": -122.664178983618
+        }
+      },
+      {
+        "stop_number": 9,
+        "time": "3:41 pm",
+        "address": "JOHNSON RD No Intersection, West Linn, OR",
+        "coordinates": {
+          "lat": 45.366717,
+          "lng": -122.614439
+        }
+      }
+    ]
+  },
+  {
+    "id": "route-221",
+    "name": "Bus 221",
+    "stops": [
+      {
+        "stop_number": 1,
+        "time": "3:30 pm",
+        "address": "22075 S WISTERIA RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.366750990677,
+          "lng": -122.664870155353
+        }
+      },
+      {
+        "stop_number": 2,
+        "time": "3:31 pm",
+        "address": "21691 S WISTERIA RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.370047760834,
+          "lng": -122.664046381909
+        }
+      },
+      {
+        "stop_number": 3,
+        "time": "3:31 pm",
+        "address": "21545 S WISTERIA RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.370439237622,
+          "lng": -122.663104088354
+        }
+      },
+      {
+        "stop_number": 4,
+        "time": "3:32 pm",
+        "address": "21321 GRAPEVINE RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.372751050337,
+          "lng": -122.661976387101
+        }
+      },
+      {
+        "stop_number": 5,
+        "time": "3:34 pm",
+        "address": "S GRAPEVINE RD & S SWEETBRIAR RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.369904011195,
+          "lng": -122.669363023094
+        }
+      },
+      {
+        "stop_number": 6,
+        "time": "3:35 pm",
+        "address": "21180 S SWEETBRIAR RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.372897775552,
+          "lng": -122.668285697078
+        }
+      },
+      {
+        "stop_number": 7,
+        "time": "3:37 pm",
+        "address": "20141 S SWEETBRIAR RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.379719806546,
+          "lng": -122.672288977854
+        }
+      },
+      {
+        "stop_number": 8,
+        "time": "3:38 pm",
+        "address": "19996 S SWEETBRIAR RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.38208794565,
+          "lng": -122.669373835749
+        }
+      },
+      {
+        "stop_number": 9,
+        "time": "3:38 pm",
+        "address": "19835 S SWEETBRIAR RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.382129436071,
+          "lng": -122.672168194629
+        }
+      },
+      {
+        "stop_number": 10,
+        "time": "3:38 pm",
+        "address": "S SWEETBRIAR RD & S SUNSHINE LN, West Linn, OR",
+        "coordinates": {
+          "lat": 45.38228797977,
+          "lng": -122.67167902676
+        }
+      },
+      {
+        "stop_number": 11,
+        "time": "3:40 pm",
+        "address": "630 S ROSEMONT RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.3827294127,
+          "lng": -122.667379529526
+        }
+      },
+      {
+        "stop_number": 12,
+        "time": "3:40 pm",
+        "address": "ROSEMONT RD&FERNVIEW RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.382071014206,
+          "lng": -122.663904979203
+        }
+      },
+      {
+        "stop_number": 13,
+        "time": "3:42 pm",
+        "address": "20701 S WISTERIA RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.376072672837,
+          "lng": -122.657189482198
+        }
+      },
+      {
+        "stop_number": 14,
+        "time": "3:42 pm",
+        "address": "S WISTERIA RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.376269249421,
+          "lng": -122.655838235587
+        }
+      }
+    ]
+  },
+  {
+    "id": "route-222",
+    "name": "Bus 222",
+    "stops": [
+      {
+        "stop_number": 1,
+        "time": "3:22 pm",
+        "address": "DAY RD & HORIZON DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.362325010524,
+          "lng": -122.650335013238
+        }
+      },
+      {
+        "stop_number": 2,
+        "time": "3:25 pm",
+        "address": "CRESTVIEW DR & SUNBREAK LN, West Linn, OR",
+        "coordinates": {
+          "lat": 45.357322020157,
+          "lng": -122.647938040387
+        }
+      },
+      {
+        "stop_number": 3,
+        "time": "3:28 pm",
+        "address": "TANNLER DR & REMINGTON DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.354424982962,
+          "lng": -122.649621964735
+        }
+      },
+      {
+        "stop_number": 4,
+        "time": "3:30 pm",
+        "address": "BLANKENSHIP RD & VIRGINIA LN, West Linn, OR",
+        "coordinates": {
+          "lat": 45.351440983522,
+          "lng": -122.65690097709
+        }
+      },
+      {
+        "stop_number": 5,
+        "time": "3:31 pm",
+        "address": "BLANKENSHIP RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.349003505124,
+          "lng": -122.651815005882
+        }
+      }
+    ]
+  },
+  {
+    "id": "route-227",
+    "name": "Bus 227",
+    "stops": [
+      {
+        "stop_number": 1,
+        "time": "3:22 pm",
+        "address": "DOLLAR ST & 8TH AVE, West Linn, OR",
+        "coordinates": {
+          "lat": 45.344162013076,
+          "lng": -122.658205033586
+        }
+      },
+      {
+        "stop_number": 2,
+        "time": "3:23 pm",
+        "address": "16TH ST & APRIL CT, West Linn, OR",
+        "coordinates": {
+          "lat": 45.345556007393,
+          "lng": -122.659387971582
+        }
+      },
+      {
+        "stop_number": 3,
+        "time": "3:24 pm",
+        "address": "16TH ST & JAMIE CIR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.347348980302,
+          "lng": -122.65941496131
+        }
+      },
+      {
+        "stop_number": 4,
+        "time": "3:25 pm",
+        "address": "1988 HILLHOUSE DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.348113409871,
+          "lng": -122.661043816554
+        }
+      },
+      {
+        "stop_number": 5,
+        "time": "3:26 pm",
+        "address": "19TH ST & SHERRI CT, West Linn, OR",
+        "coordinates": {
+          "lat": 45.347133984485,
+          "lng": -122.663193020347
+        }
+      },
+      {
+        "stop_number": 6,
+        "time": "3:28 pm",
+        "address": "19TH ST & ANN CT, West Linn, OR",
+        "coordinates": {
+          "lat": 45.35103001881,
+          "lng": -122.663169970113
+        }
+      },
+      {
+        "stop_number": 7,
+        "time": "3:29 pm",
+        "address": "OSTMAN RD & BLANKENSHIP RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.351330007124,
+          "lng": -122.666948029151
+        }
+      },
+      {
+        "stop_number": 8,
+        "time": "3:30 pm",
+        "address": "OSTMAN RD & SHORT ST / FIELDS DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.349002017336,
+          "lng": -122.66698097003
+        }
+      },
+      {
+        "stop_number": 9,
+        "time": "3:31 pm",
+        "address": "DOLLAR ST & FIELDS DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.348151002707,
+          "lng": -122.668622984862
+        }
+      },
+      {
+        "stop_number": 10,
+        "time": "3:32 pm",
+        "address": "RIVER HEIGHTS CIR & NICOLE CT, West Linn, OR",
+        "coordinates": {
+          "lat": 45.349562012288,
+          "lng": -122.670757017411
+        }
+      },
+      {
+        "stop_number": 11,
+        "time": "3:34 pm",
+        "address": "DOLLAR ST, West Linn, OR",
+        "coordinates": {
+          "lat": 45.344191496421,
+          "lng": -122.65822200694
+        }
+      }
+    ]
+  },
+  {
+    "id": "route-228",
+    "name": "Bus 228",
+    "stops": [
+      {
+        "stop_number": 1,
+        "time": "3:21 pm",
+        "address": "SUNSET AVE & PINE ST/1748 SUNSET, West Linn, OR",
+        "coordinates": {
+          "lat": 45.357497998214,
+          "lng": -122.620190001382
+        }
+      },
+      {
+        "stop_number": 2,
+        "time": "3:22 pm",
+        "address": "SUNSET AVE & IMPERIAL DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.356761019377,
+          "lng": -122.621865040912
+        }
+      },
+      {
+        "stop_number": 3,
+        "time": "3:23 pm",
+        "address": "RIVERVIEW DR & ROCKRIDGE DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.354156007689,
+          "lng": -122.628811040255
+        }
+      },
+      {
+        "stop_number": 4,
+        "time": "3:26 pm",
+        "address": "WELLINGTON DR & EDGEWOOD CT, West Linn, OR",
+        "coordinates": {
+          "lat": 45.35463297989,
+          "lng": -122.631638004739
+        }
+      },
+      {
+        "stop_number": 5,
+        "time": "3:29 pm",
+        "address": "WELLINGTON DR & BEACON HILL DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.352473005351,
+          "lng": -122.634548033883
+        }
+      },
+      {
+        "stop_number": 6,
+        "time": "3:32 pm",
+        "address": "BEACON HILL DR & FAIRHAVEN DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.356401980555,
+          "lng": -122.63811403077
+        }
+      },
+      {
+        "stop_number": 7,
+        "time": "3:35 pm",
+        "address": "BEACON HILL DR & BEACON HILL LN, West Linn, OR",
+        "coordinates": {
+          "lat": 45.359536016062,
+          "lng": -122.637109040579
+        }
+      },
+      {
+        "stop_number": 8,
+        "time": "3:38 pm",
+        "address": "PONDERAY DR & CASCADE TER, West Linn, OR",
+        "coordinates": {
+          "lat": 45.360409997106,
+          "lng": -122.643119032794
+        }
+      },
+      {
+        "stop_number": 9,
+        "time": "3:41 pm",
+        "address": "PONDERAY DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.361752002668,
+          "lng": -122.642182480843
+        }
+      }
+    ]
+  },
+  {
+    "id": "route-229",
+    "name": "Bus 229",
+    "stops": [
+      {
+        "stop_number": 1,
+        "time": "3:21 pm",
+        "address": "PARKER RD & NOBLE LN - SOUTH ENTRANCE, West Linn, OR",
+        "coordinates": {
+          "lat": 45.364891004453,
+          "lng": -122.645389019812
+        }
+      },
+      {
+        "stop_number": 2,
+        "time": "3:22 pm",
+        "address": "SALAMO RD & HOODVIEW AVE, West Linn, OR",
+        "coordinates": {
+          "lat": 45.367391996722,
+          "lng": -122.647338985767
+        }
+      },
+      {
+        "stop_number": 3,
+        "time": "3:26 pm",
+        "address": "SANTA ANITA DR & HIDDEN SPRINGS CT, West Linn, OR",
+        "coordinates": {
+          "lat": 45.375945016451,
+          "lng": -122.64817499679
+        }
+      },
+      {
+        "stop_number": 4,
+        "time": "3:28 pm",
+        "address": "CLUB HOUSE DR & CHURCHILL DOWNS DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.37245898292,
+          "lng": -122.648977983114
+        }
+      },
+      {
+        "stop_number": 5,
+        "time": "3:30 pm",
+        "address": "HORTON RD & EAGLE CREST, West Linn, OR",
+        "coordinates": {
+          "lat": 45.372535006782,
+          "lng": -122.643237972
+        }
+      },
+      {
+        "stop_number": 6,
+        "time": "3:31 pm",
+        "address": "APOLLO RD & ATHENA RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.374300989962,
+          "lng": -122.638947024308
+        }
+      },
+      {
+        "stop_number": 7,
+        "time": "3:34 pm",
+        "address": "PIMLICO DR & PALOMINO CIR (SOUTH ENTRANCE), West Linn, OR",
+        "coordinates": {
+          "lat": 45.37534001068,
+          "lng": -122.637744975573
+        }
+      },
+      {
+        "stop_number": 8,
+        "time": "3:35 pm",
+        "address": "PIMLICO DR & PALOMINO WAY, West Linn, OR",
+        "coordinates": {
+          "lat": 45.37534001068,
+          "lng": -122.637744975573
+        }
+      },
+      {
+        "stop_number": 9,
+        "time": "3:36 pm",
+        "address": "PIMLICO DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.376054484107,
+          "lng": -122.63323852915
+        }
+      }
+    ]
+  },
+  {
+    "id": "route-230",
+    "name": "Bus 230",
+    "stops": [
+      {
+        "stop_number": 1,
+        "time": "3:23 pm",
+        "address": "SUNCREST DR & GALLERY WAY, West Linn, OR",
+        "coordinates": {
+          "lat": 45.382954005796,
+          "lng": -122.656489006549
+        }
+      },
+      {
+        "stop_number": 2,
+        "time": "3:24 pm",
+        "address": "SUNCREST DR & VALLEY VIEW DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.386753019591,
+          "lng": -122.656446007386
+        }
+      },
+      {
+        "stop_number": 3,
+        "time": "3:25 pm",
+        "address": "VALLEY VIEW DR & WOODHAVEN CT, West Linn, OR",
+        "coordinates": {
+          "lat": 45.386691999336,
+          "lng": -122.652571975557
+        }
+      },
+      {
+        "stop_number": 4,
+        "time": "3:25 pm",
+        "address": "VALLEYVIEW DR & HILLCREST DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.387479018135,
+          "lng": -122.652728968604
+        }
+      },
+      {
+        "stop_number": 5,
+        "time": "3:26 pm",
+        "address": "2015 HILLCREST DR & STOP SIGN/19001 SUNCREST, West Linn, OR",
+        "coordinates": {
+          "lat": 45.387636262638,
+          "lng": -122.656093548358
+        }
+      },
+      {
+        "stop_number": 6,
+        "time": "3:27 pm",
+        "address": "MARYLHURST DR & SYLVAN WAY, West Linn, OR",
+        "coordinates": {
+          "lat": 45.389023006609,
+          "lng": -122.65787403223
+        }
+      },
+      {
+        "stop_number": 7,
+        "time": "3:28 pm",
+        "address": "SKYE PKWY & MOUNTAIN VIEW CT, West Linn, OR",
+        "coordinates": {
+          "lat": 45.390480996757,
+          "lng": -122.656922015667
+        }
+      },
+      {
+        "stop_number": 8,
+        "time": "3:30 pm",
+        "address": "TROON DR & SKYE PARKWAY, West Linn, OR",
+        "coordinates": {
+          "lat": 45.392074983284,
+          "lng": -122.659139029057
+        }
+      },
+      {
+        "stop_number": 9,
+        "time": "3:31 pm",
+        "address": "TROON DR & STONEHAVEN CT, West Linn, OR",
+        "coordinates": {
+          "lat": 45.39115599142,
+          "lng": -122.663326041151
+        }
+      },
+      {
+        "stop_number": 10,
+        "time": "3:32 pm",
+        "address": "MARYHURST DR & 2ND MARYHURST CIR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.387669999799,
+          "lng": -122.661686959985
+        }
+      },
+      {
+        "stop_number": 11,
+        "time": "3:33 pm",
+        "address": "VALLEY VIEW DR & KAPTEYNS ST, West Linn, OR",
+        "coordinates": {
+          "lat": 45.386822002654,
+          "lng": -122.659696006523
+        }
+      },
+      {
+        "stop_number": 12,
+        "time": "3:34 pm",
+        "address": "SUNCREST DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.37601873529,
+          "lng": -122.65335518059
+        }
+      }
+    ]
+  },
+  {
+    "id": "route-231",
+    "name": "Bus 231",
+    "stops": [
+      {
+        "stop_number": 1,
+        "time": "3:22 pm",
+        "address": "BEACON HILL DR & IMPERIAL DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.351081986609,
+          "lng": -122.632473009933
+        }
+      },
+      {
+        "stop_number": 2,
+        "time": "3:24 pm",
+        "address": "RIVERKNOLL WAY & BARRINGTON DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.352314000648,
+          "lng": -122.640546039976
+        }
+      },
+      {
+        "stop_number": 3,
+        "time": "3:26 pm",
+        "address": "GREENE ST & BARNES CIR (EAST END), West Linn, OR",
+        "coordinates": {
+          "lat": 45.350864979136,
+          "lng": -122.646928021054
+        }
+      },
+      {
+        "stop_number": 4,
+        "time": "3:31 pm",
+        "address": "6TH ST & UPPER WILLAMETTE FALLS DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.347298982249,
+          "lng": -122.644560971597
+        }
+      },
+      {
+        "stop_number": 5,
+        "time": "3:33 pm",
+        "address": "5TH AVE & 9TH ST, West Linn, OR",
+        "coordinates": {
+          "lat": 45.344592004709,
+          "lng": -122.648762987297
+        }
+      },
+      {
+        "stop_number": 6,
+        "time": "3:35 pm",
+        "address": "4TH AVE & 12TH ST, West Linn, OR",
+        "coordinates": {
+          "lat": 45.342264014921,
+          "lng": -122.652847991629
+        }
+      },
+      {
+        "stop_number": 7,
+        "time": "3:36 pm",
+        "address": "12TH ST, West Linn, OR",
+        "coordinates": {
+          "lat": 45.345016401422,
+          "lng": -122.654542099989
+        }
+      }
+    ]
+  },
+  {
+    "id": "route-233",
+    "name": "Bus 233",
+    "stops": [
+      {
+        "stop_number": 1,
+        "time": "3:21 pm",
+        "address": "CLARK ST & OREGON CITY LOOP, West Linn, OR",
+        "coordinates": {
+          "lat": 45.359853983559,
+          "lng": -122.622909006953
+        }
+      },
+      {
+        "stop_number": 2,
+        "time": "3:22 pm",
+        "address": "LONG ST & BITTNER ST, West Linn, OR",
+        "coordinates": {
+          "lat": 45.359142988622,
+          "lng": -122.626154982776
+        }
+      },
+      {
+        "stop_number": 3,
+        "time": "3:24 pm",
+        "address": "CORNWALL ST & YORK ST, West Linn, OR",
+        "coordinates": {
+          "lat": 45.360414984338,
+          "lng": -122.630099003497
+        }
+      },
+      {
+        "stop_number": 4,
+        "time": "3:25 pm",
+        "address": "OXFORD ST & BONNET DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.361542015039,
+          "lng": -122.628830989184
+        }
+      },
+      {
+        "stop_number": 5,
+        "time": "3:27 pm",
+        "address": "KNOX ST & SUMMIT ST, West Linn, OR",
+        "coordinates": {
+          "lat": 45.364059980663,
+          "lng": -122.630041000727
+        }
+      },
+      {
+        "stop_number": 6,
+        "time": "3:28 pm",
+        "address": "RIDGE LN & COHO LN, West Linn, OR",
+        "coordinates": {
+          "lat": 45.365454016889,
+          "lng": -122.632547022138
+        }
+      },
+      {
+        "stop_number": 7,
+        "time": "3:30 pm",
+        "address": "1430 ROSEMONT RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.366475267972,
+          "lng": -122.636896140239
+        }
+      },
+      {
+        "stop_number": 8,
+        "time": "3:31 pm",
+        "address": "ROSEMONT RD & WILD ROSE DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.367502218749,
+          "lng": -122.640067600943
+        }
+      },
+      {
+        "stop_number": 9,
+        "time": "3:32 pm",
+        "address": "WILD ROSE DR & ROXBURY DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.366397106725,
+          "lng": -122.640390220396
+        }
+      },
+      {
+        "stop_number": 10,
+        "time": "3:33 pm",
+        "address": "WILD ROSE DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.367096953731,
+          "lng": -122.64020988375
+        }
+      }
+    ]
+  },
+  {
+    "id": "route-240",
+    "name": "Bus 240",
+    "stops": [
+      {
+        "stop_number": 1,
+        "time": "3:20 pm",
+        "address": "DILLOW DR & LARSON AVE, West Linn, OR",
+        "coordinates": {
+          "lat": 45.375451406173,
+          "lng": -122.625990026922
+        }
+      },
+      {
+        "stop_number": 2,
+        "time": "3:22 pm",
+        "address": "20390 WILLAMETTE DR - CHURCH, West Linn, OR",
+        "coordinates": {
+          "lat": 45.378408918799,
+          "lng": -122.63398560818
+        }
+      },
+      {
+        "stop_number": 3,
+        "time": "3:24 pm",
+        "address": "WILLAMETTE DR & MAPLETON DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.384530013141,
+          "lng": -122.639034028463
+        }
+      },
+      {
+        "stop_number": 4,
+        "time": "3:25 pm",
+        "address": "CEDAROAK DR & OLD RIVER DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.387227016216,
+          "lng": -122.639578013979
+        }
+      },
+      {
+        "stop_number": 5,
+        "time": "3:27 pm",
+        "address": "OLD RIVER DR & ROBIN VIEW DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.395075997987,
+          "lng": -122.640661961697
+        }
+      },
+      {
+        "stop_number": 6,
+        "time": "3:28 pm",
+        "address": "4085 CALAROGA DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.395141460651,
+          "lng": -122.635319420432
+        }
+      },
+      {
+        "stop_number": 7,
+        "time": "3:29 pm",
+        "address": "CALAROGA DR & PARKWOOD WAY, West Linn, OR",
+        "coordinates": {
+          "lat": 45.39393999865,
+          "lng": -122.636855990922
+        }
+      },
+      {
+        "stop_number": 8,
+        "time": "3:30 pm",
+        "address": "CALAROGA DR (2ND CALAROGA CIR), West Linn, OR",
+        "coordinates": {
+          "lat": 45.392716995158,
+          "lng": -122.635178017726
+        }
+      },
+      {
+        "stop_number": 9,
+        "time": "3:31 pm",
+        "address": "ELMRAN DR & GLEN TERRACE, West Linn, OR",
+        "coordinates": {
+          "lat": 45.390326979286,
+          "lng": -122.634373019745
+        }
+      },
+      {
+        "stop_number": 10,
+        "time": "3:32 pm",
+        "address": "ELMRAN DR & NIXON AVE, West Linn, OR",
+        "coordinates": {
+          "lat": 45.39137501055,
+          "lng": -122.63188200194
+        }
+      },
+      {
+        "stop_number": 11,
+        "time": "3:34 pm",
+        "address": "CEDAROAK DR & TRILLIUM DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.387330993725,
+          "lng": -122.634787001943
+        }
+      },
+      {
+        "stop_number": 12,
+        "time": "3:35 pm",
+        "address": "CEDAROAK DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.387857000058,
+          "lng": -122.632336007726
+        }
+      }
+    ]
+  },
+  {
+    "id": "route-244",
+    "name": "Bus 244",
+    "stops": [
+      {
+        "stop_number": 1,
+        "time": "3:25 pm",
+        "address": "WILLAMETTE DR & LAZY RIVER DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.391717998028,
+          "lng": -122.64638302971
+        }
+      },
+      {
+        "stop_number": 2,
+        "time": "3:25 pm",
+        "address": "18399 SHADY HOLLOW WAY - VILLAS AT OAK COURT, West Linn, OR",
+        "coordinates": {
+          "lat": 45.393380338975,
+          "lng": -122.64726949979
+        }
+      },
+      {
+        "stop_number": 3,
+        "time": "3:28 pm",
+        "address": "UPPER MIDHILL DR & ARBOR DR & STOP SIGN, West Linn, OR",
+        "coordinates": {
+          "lat": 45.394195981973,
+          "lng": -122.653301033496
+        }
+      },
+      {
+        "stop_number": 4,
+        "time": "3:29 pm",
+        "address": "18505 UPPER MIDHILL DR-MIDHILL PARK, West Linn, OR",
+        "coordinates": {
+          "lat": 45.393393,
+          "lng": -122.651381
+        }
+      },
+      {
+        "stop_number": 5,
+        "time": "3:29 pm",
+        "address": "UPPER MIDHILL DR & ROBINWOOD WAY, West Linn, OR",
+        "coordinates": {
+          "lat": 45.391880020216,
+          "lng": -122.650815966842
+        }
+      },
+      {
+        "stop_number": 6,
+        "time": "3:30 pm",
+        "address": "UPPER MIDHILL DR & MARYLHURST DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.390532000638,
+          "lng": -122.648761981469
+        }
+      },
+      {
+        "stop_number": 7,
+        "time": "3:31 pm",
+        "address": "VIEW DR & RYDMAN CT, West Linn, OR",
+        "coordinates": {
+          "lat": 45.388805999136,
+          "lng": -122.645991008098
+        }
+      },
+      {
+        "stop_number": 8,
+        "time": "3:32 pm",
+        "address": "19266 VIEW DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.388994424319,
+          "lng": -122.647371004637
+        }
+      },
+      {
+        "stop_number": 9,
+        "time": "3:33 pm",
+        "address": "MARYLHURST DR & MIDHILL CIR (NE), West Linn, OR",
+        "coordinates": {
+          "lat": 45.390997992545,
+          "lng": -122.647728995722
+        }
+      },
+      {
+        "stop_number": 10,
+        "time": "3:33 pm",
+        "address": "MARYLHURST DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.391657857872,
+          "lng": -122.646495933946
+        }
+      }
+    ]
+  },
+  {
+    "id": "route-248",
+    "name": "Bus 248",
+    "stops": [
+      {
+        "stop_number": 1,
+        "time": "3:25 pm",
+        "address": "BAY MEADOWS DR & BELLEVUE WAY, West Linn, OR",
+        "coordinates": {
+          "lat": 45.378147990153,
+          "lng": -122.650631984067
+        }
+      },
+      {
+        "stop_number": 2,
+        "time": "3:26 pm",
+        "address": "DERBY ST & SURREY LN, West Linn, OR",
+        "coordinates": {
+          "lat": 45.381149004857,
+          "lng": -122.64921896283
+        }
+      },
+      {
+        "stop_number": 3,
+        "time": "3:27 pm",
+        "address": "CARRIAGE WAY & HUNTER WAY, West Linn, OR",
+        "coordinates": {
+          "lat": 45.377942004883,
+          "lng": -122.64601598617
+        }
+      },
+      {
+        "stop_number": 4,
+        "time": "3:28 pm",
+        "address": "CARRIAGE WAY & BLUEGRASS WY, West Linn, OR",
+        "coordinates": {
+          "lat": 45.381914985078,
+          "lng": -122.646232993643
+        }
+      },
+      {
+        "stop_number": 5,
+        "time": "3:29 pm",
+        "address": "2790 CARRIAGE WAY, West Linn, OR",
+        "coordinates": {
+          "lat": 45.383177676882,
+          "lng": -122.648382448893
+        }
+      },
+      {
+        "stop_number": 6,
+        "time": "3:30 pm",
+        "address": "19671 WILDWOOD DR & WILDWOOD PL, West Linn, OR",
+        "coordinates": {
+          "lat": 45.385646985558,
+          "lng": -122.649877026048
+        }
+      },
+      {
+        "stop_number": 7,
+        "time": "3:32 pm",
+        "address": "CARRIAGE WY & SUN CIRCLE-WESTSIDE, West Linn, OR",
+        "coordinates": {
+          "lat": 45.382718013312,
+          "lng": -122.651892035572
+        }
+      },
+      {
+        "stop_number": 8,
+        "time": "3:39 pm",
+        "address": "SALAMO RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.359455989841,
+          "lng": -122.64605148353
+        }
+      }
+    ]
+  },
+  {
+    "id": "route-252",
+    "name": "Bus 252",
+    "stops": [
+      {
+        "stop_number": 1,
+        "time": "3:23 pm",
+        "address": "WEATHERHILL RD & SATTER ST, West Linn, OR",
+        "coordinates": {
+          "lat": 45.360047395974,
+          "lng": -122.652131171269
+        }
+      },
+      {
+        "stop_number": 2,
+        "time": "3:23 pm",
+        "address": "WEATHERHILL RD & DE VRIES WAY, West Linn, OR",
+        "coordinates": {
+          "lat": 45.359500602521,
+          "lng": -122.650069139269
+        }
+      },
+      {
+        "stop_number": 3,
+        "time": "3:25 pm",
+        "address": "COEUR D ALENE DR& PONDEROSA LP (N), West Linn, OR",
+        "coordinates": {
+          "lat": 45.357683992646,
+          "lng": -122.643644997218
+        }
+      },
+      {
+        "stop_number": 4,
+        "time": "3:27 pm",
+        "address": "COEUR D ALENE DR & SOUTH RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.355298796368,
+          "lng": -122.641869291031
+        }
+      },
+      {
+        "stop_number": 5,
+        "time": "3:29 pm",
+        "address": "ROGUE WY & HASKINS RD (NORTHWEST), West Linn, OR",
+        "coordinates": {
+          "lat": 45.353228005279,
+          "lng": -122.644513027111
+        }
+      },
+      {
+        "stop_number": 6,
+        "time": "3:31 pm",
+        "address": "ROGUE WAY No Intersection, West Linn, OR",
+        "coordinates": {
+          "lat": 45.366717,
+          "lng": -122.614439
+        }
+      }
+    ]
+  },
+  {
+    "id": "route-253",
+    "name": "Bus 253",
+    "stops": [
+      {
+        "stop_number": 1,
+        "time": "3:19 pm",
+        "address": "SUNSET AVE & EXETER ST, West Linn, OR",
+        "coordinates": {
+          "lat": 45.357090009077,
+          "lng": -122.627577978479
+        }
+      },
+      {
+        "stop_number": 2,
+        "time": "3:21 pm",
+        "address": "SUNSET AVE & CORNWALL ST, West Linn, OR",
+        "coordinates": {
+          "lat": 45.358509987294,
+          "lng": -122.631483023349
+        }
+      },
+      {
+        "stop_number": 3,
+        "time": "3:23 pm",
+        "address": "4715 COHO LN, West Linn, OR",
+        "coordinates": {
+          "lat": 45.362331171223,
+          "lng": -122.633588389789
+        }
+      },
+      {
+        "stop_number": 4,
+        "time": "3:27 pm",
+        "address": "WILD ROSE LP & NOMIE WY, West Linn, OR",
+        "coordinates": {
+          "lat": 45.362509412394,
+          "lng": -122.641978088134
+        }
+      },
+      {
+        "stop_number": 5,
+        "time": "3:30 pm",
+        "address": "2965 WINKEL WY, West Linn, OR",
+        "coordinates": {
+          "lat": 45.361724447162,
+          "lng": -122.633881672581
+        }
+      },
+      {
+        "stop_number": 6,
+        "time": "3:31 pm",
+        "address": "WINKEL WY & DAMON DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.363319984341,
+          "lng": -122.639058000706
+        }
+      },
+      {
+        "stop_number": 7,
+        "time": "3:31 pm",
+        "address": "DAMON DR No Intersection, West Linn, OR",
+        "coordinates": {
+          "lat": 45.366717,
+          "lng": -122.614439
+        }
+      }
+    ]
+  },
+  {
+    "id": "route-258",
+    "name": "Bus 258",
+    "stops": [
+      {
+        "stop_number": 1,
+        "time": "3:24 pm",
+        "address": "OSTMAN RD & BEXHILL ST, West Linn, OR",
+        "coordinates": {
+          "lat": 45.345896983215,
+          "lng": -122.666979964202
+        }
+      },
+      {
+        "stop_number": 2,
+        "time": "3:26 pm",
+        "address": "EPPERLY WAY & JOSEPH FIELDS ST, West Linn, OR",
+        "coordinates": {
+          "lat": 45.346296003715,
+          "lng": -122.66831503374
+        }
+      },
+      {
+        "stop_number": 3,
+        "time": "3:28 pm",
+        "address": "WILLAMETTE FALLS DR & SWIFTSHORE DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.343772003122,
+          "lng": -122.665032009904
+        }
+      },
+      {
+        "stop_number": 4,
+        "time": "3:29 pm",
+        "address": "1285 WILLAMETTE FALLS DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.343205260738,
+          "lng": -122.663585880149
+        }
+      },
+      {
+        "stop_number": 5,
+        "time": "3:31 pm",
+        "address": "CHERYL DR & KIMBERLY DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.342039002731,
+          "lng": -122.660913980874
+        }
+      },
+      {
+        "stop_number": 6,
+        "time": "3:32 pm",
+        "address": "5TH AVE&15TH ST, West Linn, OR",
+        "coordinates": {
+          "lat": 45.341927984423,
+          "lng": -122.657161989555
+        }
+      },
+      {
+        "stop_number": 7,
+        "time": "3:34 pm",
+        "address": "24444 SW PETES MOUNTAIN RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.33847162283,
+          "lng": -122.656172170609
+        }
+      },
+      {
+        "stop_number": 8,
+        "time": "3:36 pm",
+        "address": "25125 SW PETES MOUNTAIN RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.338893861202,
+          "lng": -122.662175876397
+        }
+      },
+      {
+        "stop_number": 9,
+        "time": "3:40 pm",
+        "address": "BIG FIR RD&VALLEY VIEW RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.342778999052,
+          "lng": -122.679538988825
+        }
+      },
+      {
+        "stop_number": 10,
+        "time": "3:40 pm",
+        "address": "24900 SW BIG FIR RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.340052868864,
+          "lng": -122.682614728195
+        }
+      },
+      {
+        "stop_number": 11,
+        "time": "3:41 pm",
+        "address": "SW BIG FIR RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.341733503315,
+          "lng": -122.680552989561
+        }
+      }
+    ]
+  },
+  {
+    "id": "route-259",
+    "name": "Bus 259",
+    "stops": [
+      {
+        "stop_number": 1,
+        "time": "3:22 pm",
+        "address": "ROSE WY & FAIRVIEW WY, West Linn, OR",
+        "coordinates": {
+          "lat": 45.391206995301,
+          "lng": -122.642688035333
+        }
+      },
+      {
+        "stop_number": 2,
+        "time": "3:24 pm",
+        "address": "WILDERNESS DR & FOREST CT, West Linn, OR",
+        "coordinates": {
+          "lat": 45.386144996335,
+          "lng": -122.643021970355
+        }
+      },
+      {
+        "stop_number": 3,
+        "time": "3:26 pm",
+        "address": "WILDERNESS DR & TOP VIEW CT, West Linn, OR",
+        "coordinates": {
+          "lat": 45.384344982628,
+          "lng": -122.642550991216
+        }
+      },
+      {
+        "stop_number": 4,
+        "time": "3:26 pm",
+        "address": "HIDDEN SPRINGS RD & AUTUMN VIEW CT, West Linn, OR",
+        "coordinates": {
+          "lat": 45.382809585604,
+          "lng": -122.641733001285
+        }
+      },
+      {
+        "stop_number": 5,
+        "time": "3:27 pm",
+        "address": "AUTUMN VIEW CT & HIDDEN SPRINGS RD, West Linn, OR",
+        "coordinates": {
+          "lat": 45.382809585604,
+          "lng": -122.641733001285
+        }
+      },
+      {
+        "stop_number": 6,
+        "time": "3:28 pm",
+        "address": "19500 HIDDEN SPRINGS RD (LARKSPUR APTS ENT), West Linn, OR",
+        "coordinates": {
+          "lat": 45.383497614126,
+          "lng": -122.64037429478
+        }
+      },
+      {
+        "stop_number": 7,
+        "time": "3:30 pm",
+        "address": "WILLAMETTE DR & MOHAWK WAY, West Linn, OR",
+        "coordinates": {
+          "lat": 45.379946998032,
+          "lng": -122.636687011754
+        }
+      },
+      {
+        "stop_number": 8,
+        "time": "3:31 pm",
+        "address": "WILLAMETTE DR, West Linn, OR",
+        "coordinates": {
+          "lat": 45.365018744657,
+          "lng": -122.611609614739
+        }
+      }
+    ]
+  }
+]
