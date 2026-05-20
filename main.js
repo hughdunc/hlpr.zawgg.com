@@ -2,6 +2,10 @@ document.getElementById('date').textContent = new Date().toLocaleDateString();
 const ICS_URL = "./calendar.ics";
 let current_day = "No School"
 let dayType
+
+// Keep track of the non-countdown title so we can restore it when there's no active period
+const BASE_TITLE = document.title || "Hlpr";
+
 function unfoldICS(raw) {
 	raw = raw.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
 	return raw.replace(/\n[ \t]/g, '');
@@ -204,11 +208,14 @@ function updateActive() {
 			untilEl.textContent = nextLabel ? ("until " + nextLabel + " (" + next.start.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit'}) + ")") : ""
 			const timeleft = getTimeLeft(active)
 			if (timeleft) {
+				const secondsStr = String(timeleft.seconds).padStart(2, '0')
 				timeleftEl.textContent = timeleft.minutes + "m " + timeleft.seconds + "s"
 				progressEl.style.width = timeleft.percent + "%"
+				document.title = `${timeleft.minutes}m ${secondsStr}s left`
 			}
 		} else {
 			tlc.style.display = "none"
+			document.title = BASE_TITLE
 		}
 	}catch(e){
 		console.error("updateActive crashed:", e)
