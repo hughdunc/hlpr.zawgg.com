@@ -108,6 +108,39 @@
             line-height: 1;
             animation: marquee-content 5s linear infinite;
         }
+
+        .confetti-container {
+            position: fixed;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            z-index: 60;
+            pointer-events: none;
+            overflow: visible;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 16px;
+            border-radius: 2px;
+            opacity: 0;
+            animation-name: confetti-burst;
+            animation-timing-function: ease-out;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes confetti-burst {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--x), calc(-1 * var(--y))) rotate(var(--r));
+                opacity: 0;
+            }
+        }
     </style>
     <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@1&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -144,6 +177,15 @@
             <div id="events"></div>
         </div>
     </div>
+
+    <div id="summer-modal" class="hidden fixed inset-0 z-40 flex items-center justify-center text-center">
+        <div class="absolute inset-0 bg-zinc-950/70 backdrop-blur-sm"></div>
+        <div class="relative z-10 bg-zinc-900/90 border border-zinc-50/20 px-10 py-8 rounded-2xl text-3xl font-bold shadow-2xl">
+            Have a great summer!
+        </div>
+    </div>
+
+    <div id="confetti-container" class="confetti-container hidden" aria-hidden="true"></div>
 
     <script src="./main.js"></script>
 </body>
