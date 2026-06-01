@@ -247,7 +247,7 @@ function buildStandardSchedule(base){
 		{ start: t(12,9), end: t(13,34), a: "Period 3", b: "Period 7" },
 		{ start: t(13,34), end: t(13,40), a: "Passing", b: "Passing" },
 		{ start: t(13,40), end: t(15,5), a: "Period 4", b: "Period 8" },
-		{ start: t(15,5), end: t(15,5), a: "school ends", b: "school ends" },
+		{ start: t(15,5), end: t(15,5), a: "school ends", b: "school ends", marker: true },
 	];
 }
 function buildFinalsSchedule(base, periods){
@@ -261,7 +261,7 @@ function buildFinalsSchedule(base, periods){
 		{ start: t(9,55), end: t(10,4), label: "Passing" },
 		{ start: t(10,4), end: t(11,29), label: periods[1] },
 		{ start: t(11,29), end: t(12,0), label: "Lunch" },
-		{ start: t(12,0), end: t(12,0), label: "school ends" },
+		{ start: t(12,0), end: t(12,0), label: "school ends", marker: true },
 	];
 }
 function getFinalsScheduleOverride(baseDate){
@@ -284,6 +284,7 @@ function buildScheduleForToday(){
 function getActivePeriod(schedule) {
 	const now = new Date();
 	for (const period of schedule) {
+		if (period.marker) continue;
 		if (now >= period.start && now <= period.end) return period;
 	}
 	return null;
