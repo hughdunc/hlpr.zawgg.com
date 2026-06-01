@@ -22,6 +22,9 @@ const CONFETTI_X_SPREAD = 320
 const CONFETTI_Y_BASE = 360
 const CONFETTI_Y_VARIANCE = 240
 const CONFETTI_CLEANUP_BUFFER_MS = 200
+const CONFETTI_MAX_DELAY_MS = 300
+const CONFETTI_BASE_DURATION_MS = 2800
+const CONFETTI_DURATION_VARIANCE_MS = 1200
 let finalsWeekToday = false
 let finalsScheduleOverride = null
 let lastDayDate = null
@@ -140,9 +143,9 @@ function findLastDayDate(events, todayStart) {
 	return lastDayEvents[0].startDate;
 }
 function getLastDayTriggerTime(date) {
-	const trigger = startOfDay(date);
-	trigger.setHours(LAST_DAY_TRIGGER_HOUR, LAST_DAY_TRIGGER_MINUTE, 0, 0);
-	return trigger;
+	const lastDayTriggerTime = startOfDay(date);
+	lastDayTriggerTime.setHours(LAST_DAY_TRIGGER_HOUR, LAST_DAY_TRIGGER_MINUTE, 0, 0);
+	return lastDayTriggerTime;
 }
 function getSummerMode(now) {
 	if (!lastDayDate) return false;
@@ -261,13 +264,13 @@ function buildFinalsSchedule(base, periods){
 		d.setHours(h, m, 0, 0);
 		return d;
 	}
-	const finalsEnd = t(FINALS_EARLY_DISMISSAL_HOUR, FINALS_EARLY_DISMISSAL_MINUTE);
+	const earlyDismissalTime = t(FINALS_EARLY_DISMISSAL_HOUR, FINALS_EARLY_DISMISSAL_MINUTE);
 	return [
 		{ start: t(8,30), end: t(9,55), label: periods[0] },
 		{ start: t(9,55), end: t(10,4), label: "Passing" },
 		{ start: t(10,4), end: t(11,29), label: periods[1] },
-		{ start: t(11,29), end: finalsEnd, label: "Lunch" },
-		{ start: finalsEnd, end: finalsEnd, label: "school ends", marker: true },
+		{ start: t(11,29), end: earlyDismissalTime, label: "Lunch" },
+		{ start: earlyDismissalTime, end: earlyDismissalTime, label: "school ends", marker: true },
 	];
 }
 function getFinalsScheduleOverride(baseDate){
@@ -301,7 +304,7 @@ function getTimeLeft(period) {
 	const totalMs = period.end - period.start
 	const leftMs = period.end - now
 	if (totalMs <= 0) {
-		return { minutes: 0, seconds: 0, percent: 100 }
+		return null
 	}
 	const percent = 1 - (leftMs / totalMs)
 	const totalSec = Math.floor(leftMs / 1000)
@@ -337,8 +340,8 @@ function launchConfetti() {
 		const x = (Math.random() * CONFETTI_X_SPREAD) - (CONFETTI_X_SPREAD / 2);
 		const y = CONFETTI_Y_BASE + Math.random() * CONFETTI_Y_VARIANCE;
 		const rotation = Math.random() * 720;
-		const delay = Math.random() * 300;
-		const duration = 2800 + Math.random() * 1200;
+		const delay = Math.random() * CONFETTI_MAX_DELAY_MS;
+		const duration = CONFETTI_BASE_DURATION_MS + Math.random() * CONFETTI_DURATION_VARIANCE_MS;
 		maxDuration = Math.max(maxDuration, duration + delay);
 		piece.style.setProperty("--x", `${x}px`);
 		piece.style.setProperty("--y", `${y}px`);
