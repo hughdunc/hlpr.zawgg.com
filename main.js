@@ -2,6 +2,8 @@ document.getElementById('date').textContent = new Date().toLocaleDateString();
 const ICS_URL = "./calendar.ics";
 let current_day = "No School"
 let dayType
+const A_DAY_SUMMARY = "A Day-Periods 1-4"
+const B_DAY_SUMMARY = "B Day-Periods 5-8"
 const FINALS_WEEK_TITLE = "Finals Week, Semester 2"
 const LAST_DAY_TITLE = "MIDDLE and HIGH School Last Day of School"
 const FINALS_SCHEDULE_OVERRIDES = {
@@ -9,9 +11,13 @@ const FINALS_SCHEDULE_OVERRIDES = {
 	"06-05": { periods: ["Period 1", "Period 2"] },
 	"06-08": { periods: ["Period 3", "Period 4"] }
 }
-const SUMMER_TRIGGER_HOUR = 11
-const SUMMER_TRIGGER_MINUTE = 29
+const LAST_DAY_TRIGGER_HOUR = 11
+const LAST_DAY_TRIGGER_MINUTE = 29
 const CONFETTI_PIECE_COUNT = 140
+const CONFETTI_X_SPREAD = 320
+const CONFETTI_Y_BASE = 360
+const CONFETTI_Y_VARIANCE = 240
+const CONFETTI_CLEANUP_BUFFER_MS = 200
 let finalsWeekToday = false
 let finalsScheduleOverride = null
 let lastDayDate = null
@@ -103,7 +109,7 @@ function isLastDaySummary(summary) {
 	return normalizeSummary(summary) === LAST_DAY_TITLE.toLowerCase();
 }
 function isABDaySummary(summary) {
-	return summary === "B Day-Periods 5-8" || summary === "A Day-Periods 1-4";
+	return summary === B_DAY_SUMMARY || summary === A_DAY_SUMMARY;
 }
 function isScheduleSummary(summary) {
 	return isABDaySummary(summary) || isFinalsWeekSummary(summary);
@@ -130,7 +136,7 @@ function findLastDayDate(events, todayStart) {
 }
 function getLastDayTriggerTime(date) {
 	const trigger = startOfDay(date);
-	trigger.setHours(SUMMER_TRIGGER_HOUR, SUMMER_TRIGGER_MINUTE, 0, 0);
+	trigger.setHours(LAST_DAY_TRIGGER_HOUR, LAST_DAY_TRIGGER_MINUTE, 0, 0);
 	return trigger;
 }
 function getSummerMode(now) {
@@ -222,7 +228,7 @@ async function loadEvents(){
 		const abEvent = todaysEvents.find(e => isABDaySummary(e.summary));
 		if (abEvent) {
 			current_day = abEvent.summary;
-			dayType = current_day.startsWith("A Day") ? "A" : "B";
+			dayType = current_day === A_DAY_SUMMARY ? "A" : "B";
 		}
 	}
 	renderEvents(todaysEvents);
@@ -287,6 +293,9 @@ function getTimeLeft(period) {
 	if (now < period.start || now > period.end) return null
 	const totalMs = period.end - period.start
 	const leftMs = period.end - now
+	if (totalMs <= 0) {
+		return { minutes: 0, seconds: 0, percent: 100 }
+	}
 	const percent = 1 - (leftMs / totalMs)
 	const totalSec = Math.floor(leftMs / 1000)
 	return {
@@ -318,8 +327,8 @@ function launchConfetti() {
 	for (let i = 0; i < pieces; i++) {
 		const piece = document.createElement("div");
 		piece.className = "confetti-piece";
-		const x = (Math.random() * 320) - 160;
-		const y = 360 + Math.random() * 240;
+		const x = (Math.random() * CONFETTI_X_SPREAD) - (CONFETTI_X_SPREAD / 2);
+		const y = CONFETTI_Y_BASE + Math.random() * CONFETTI_Y_VARIANCE;
 		const rotation = Math.random() * 720;
 		const delay = Math.random() * 300;
 		const duration = 2800 + Math.random() * 1200;
@@ -334,7 +343,7 @@ function launchConfetti() {
 	}
 	setTimeout(() => {
 		container.innerHTML = "";
-	}, maxDuration + 200);
+	}, maxDuration + CONFETTI_CLEANUP_BUFFER_MS);
 }
 function maybeStartSummerCelebration(now) {
 	if (summerCelebrationStarted) return;
