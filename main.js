@@ -9,6 +9,9 @@ const FINALS_SCHEDULE_OVERRIDES = {
 	"06-05": { periods: ["Period 1", "Period 2"] },
 	"06-08": { periods: ["Period 3", "Period 4"] }
 }
+const SUMMER_TRIGGER_HOUR = 11
+const SUMMER_TRIGGER_MINUTE = 29
+const CONFETTI_PIECE_COUNT = 140
 let finalsWeekToday = false
 let finalsScheduleOverride = null
 let lastDayDate = null
@@ -127,7 +130,7 @@ function findLastDayDate(events, todayStart) {
 }
 function getLastDayTriggerTime(date) {
 	const trigger = startOfDay(date);
-	trigger.setHours(11, 29, 0, 0);
+	trigger.setHours(SUMMER_TRIGGER_HOUR, SUMMER_TRIGGER_MINUTE, 0, 0);
 	return trigger;
 }
 function getSummerMode(now) {
@@ -200,7 +203,8 @@ async function loadEvents(){
 	const events = parseICS(text);
 	const today = new Date();
 	const startOfToday = startOfDay(today);
-	const endOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+	const endOfToday = new Date(startOfToday);
+	endOfToday.setDate(endOfToday.getDate() + 1);
 	lastDayDate = findLastDayDate(events, startOfToday);
 	const todaysEvents = events.filter(e => {
 		if(!e.startDate) return false;
@@ -309,7 +313,7 @@ function launchConfetti() {
 	container.innerHTML = "";
 	container.classList.remove("hidden");
 	const colors = ["#ff0000", "#ff7a00", "#ffd500", "#00d26a", "#00b5ff", "#7a5cff", "#ff4fd8"];
-	const pieces = 140;
+	const pieces = CONFETTI_PIECE_COUNT;
 	let maxDuration = 0;
 	for (let i = 0; i < pieces; i++) {
 		const piece = document.createElement("div");
