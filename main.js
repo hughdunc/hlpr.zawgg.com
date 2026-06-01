@@ -4,6 +4,8 @@ let current_day = "No School"
 let dayType
 const A_DAY_SUMMARY = "A Day-Periods 1-4"
 const B_DAY_SUMMARY = "B Day-Periods 5-8"
+const A_DAY_SUMMARY_KEY = A_DAY_SUMMARY.toLowerCase()
+const B_DAY_SUMMARY_KEY = B_DAY_SUMMARY.toLowerCase()
 const FINALS_WEEK_TITLE = "Finals Week, Semester 2"
 const LAST_DAY_TITLE = "MIDDLE and HIGH School Last Day of School"
 const FINALS_SCHEDULE_OVERRIDES = {
@@ -13,6 +15,8 @@ const FINALS_SCHEDULE_OVERRIDES = {
 }
 const LAST_DAY_TRIGGER_HOUR = 11
 const LAST_DAY_TRIGGER_MINUTE = 29
+const FINALS_EARLY_DISMISSAL_HOUR = 12
+const FINALS_EARLY_DISMISSAL_MINUTE = 0
 const CONFETTI_PIECE_COUNT = 140
 const CONFETTI_X_SPREAD = 320
 const CONFETTI_Y_BASE = 360
@@ -109,7 +113,8 @@ function isLastDaySummary(summary) {
 	return normalizeSummary(summary) === LAST_DAY_TITLE.toLowerCase();
 }
 function isABDaySummary(summary) {
-	return summary === B_DAY_SUMMARY || summary === A_DAY_SUMMARY;
+	const normalized = normalizeSummary(summary);
+	return normalized === B_DAY_SUMMARY_KEY || normalized === A_DAY_SUMMARY_KEY;
 }
 function isScheduleSummary(summary) {
 	return isABDaySummary(summary) || isFinalsWeekSummary(summary);
@@ -228,7 +233,7 @@ async function loadEvents(){
 		const abEvent = todaysEvents.find(e => isABDaySummary(e.summary));
 		if (abEvent) {
 			current_day = abEvent.summary;
-			dayType = current_day === A_DAY_SUMMARY ? "A" : "B";
+			dayType = normalizeSummary(current_day) === A_DAY_SUMMARY_KEY ? "A" : "B";
 		}
 	}
 	renderEvents(todaysEvents);
@@ -256,12 +261,13 @@ function buildFinalsSchedule(base, periods){
 		d.setHours(h, m, 0, 0);
 		return d;
 	}
+	const finalsEnd = t(FINALS_EARLY_DISMISSAL_HOUR, FINALS_EARLY_DISMISSAL_MINUTE);
 	return [
 		{ start: t(8,30), end: t(9,55), label: periods[0] },
 		{ start: t(9,55), end: t(10,4), label: "Passing" },
 		{ start: t(10,4), end: t(11,29), label: periods[1] },
-		{ start: t(11,29), end: t(12,0), label: "Lunch" },
-		{ start: t(12,0), end: t(12,0), label: "school ends", marker: true },
+		{ start: t(11,29), end: finalsEnd, label: "Lunch" },
+		{ start: finalsEnd, end: finalsEnd, label: "school ends", marker: true },
 	];
 }
 function getFinalsScheduleOverride(baseDate){
