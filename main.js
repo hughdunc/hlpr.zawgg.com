@@ -6,7 +6,7 @@ const A_DAY_SUMMARY = "A Day-Periods 1-4"
 const B_DAY_SUMMARY = "B Day-Periods 5-8"
 const A_DAY_SUMMARY_KEY = A_DAY_SUMMARY.toLowerCase()
 const B_DAY_SUMMARY_KEY = B_DAY_SUMMARY.toLowerCase()
-const FINALS_WEEK_TITLE = "Finals Week, Semester 2"
+const FINALS_WEEK_TITLE = "Finals Week"
 const LAST_DAY_TITLE = "MIDDLE and HIGH School Last Day of School"
 const FINALS_SCHEDULE_OVERRIDES = {
 	"06-04": { dayType: "B" },
