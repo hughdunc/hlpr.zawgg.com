@@ -113,7 +113,8 @@ function isFinalsWeekSummary(summary) {
 	return normalizeSummary(summary).includes(FINALS_WEEK_TITLE.toLowerCase());
 }
 function isLastDaySummary(summary) {
-	return normalizeSummary(summary) === LAST_DAY_TITLE.toLowerCase();
+	const s = normalizeSummary(summary);
+	return s.includes("finals week") && s.includes("periods 3,4");
 }
 function isABDaySummary(summary) {
 	const normalized = normalizeSummary(summary);
@@ -327,33 +328,41 @@ function showSummerModal(show) {
 	modal.classList.toggle("hidden", !show);
 }
 function launchConfetti() {
-	const container = document.getElementById("confetti-container");
-	if (!container) return;
-	container.innerHTML = "";
-	container.classList.remove("hidden");
-	const colors = ["#ff0000", "#ff7a00", "#ffd500", "#00d26a", "#00b5ff", "#7a5cff", "#ff4fd8"];
-	const pieces = CONFETTI_PIECE_COUNT;
-	let maxDuration = 0;
-	for (let i = 0; i < pieces; i++) {
-		const piece = document.createElement("div");
-		piece.className = "confetti-piece";
-		const x = (Math.random() * CONFETTI_X_SPREAD) - (CONFETTI_X_SPREAD / 2);
-		const y = CONFETTI_Y_BASE + Math.random() * CONFETTI_Y_VARIANCE;
-		const rotation = Math.random() * 720;
-		const delay = Math.random() * CONFETTI_MAX_DELAY_MS;
-		const duration = CONFETTI_BASE_DURATION_MS + Math.random() * CONFETTI_DURATION_VARIANCE_MS;
-		maxDuration = Math.max(maxDuration, duration + delay);
-		piece.style.setProperty("--x", `${x}px`);
-		piece.style.setProperty("--y", `${y}px`);
-		piece.style.setProperty("--r", `${rotation}deg`);
-		piece.style.background = colors[i % colors.length];
-		piece.style.animationDelay = `${delay}ms`;
-		piece.style.animationDuration = `${duration}ms`;
-		container.appendChild(piece);
+	var count = 200;
+	var defaults = {
+	  origin: { y: 1.0 }
+	};
+	
+	function fire(particleRatio, opts) {
+	  confetti({
+	    ...defaults,
+	    ...opts,
+	    particleCount: Math.floor(count * particleRatio)
+	  });
 	}
-	setTimeout(() => {
-		container.innerHTML = "";
-	}, maxDuration + CONFETTI_CLEANUP_BUFFER_MS);
+	
+	fire(0.25, {
+	  spread: 26,
+	  startVelocity: 55,
+	});
+	fire(0.2, {
+	  spread: 60,
+	});
+	fire(0.35, {
+	  spread: 100,
+	  decay: 0.91,
+	  scalar: 0.8
+	});
+	fire(0.1, {
+	  spread: 120,
+	  startVelocity: 25,
+	  decay: 0.92,
+	  scalar: 1.2
+	});
+	fire(0.1, {
+	  spread: 120,
+	  startVelocity: 45,
+	});
 }
 function maybeStartSummerCelebration(now) {
 	if (summerCelebrationStarted) return;
