@@ -53,13 +53,15 @@ function parseICS(raw) {
 				const dtendParams = current.props['DTEND']?.params;
 				const startDate = parseICSTime(dtstartRaw, dtstartParams);
 				const endDate = parseICSTime(dtendRaw, dtendParams);
+				const isAllDay = /VALUE=DATE/i.test(dtstartParams || '') || /^\d{8}$/.test(dtstartRaw || '');
 				events.push({
 					summary: current.props['SUMMARY']?.value || '(no title)',
 					description: current.props['DESCRIPTION']?.value || '',
 					location: current.props['LOCATION']?.value || '',
 					uid: current.props['UID']?.value || '',
 					startDate,
-					endDate
+					endDate,
+					isAllDay
 				});
 			}
 			inEvent=false;
@@ -80,6 +82,14 @@ function parseICS(raw) {
 		}
 	}
 	return events;
+}
+function formatEventTime(event) {
+	if (!event.startDate) return '';
+	if (event.isAllDay) return 'All Day';
+	const start = event.startDate.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit'});
+	if (!event.endDate) return start;
+	const end = event.endDate.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit'});
+	return `${start}-${end}`;
 }
 function renderEvents(events){
 	const container = document.getElementById('events');
@@ -114,8 +124,7 @@ function renderEvents(events){
 		if(e.startDate) {
 			const time = document.createElement("span");
 			time.className = "time";
-			const val = e.startDate.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit'});
-			time.textContent = val
+			time.textContent = formatEventTime(e);
 			summary.appendChild(time);
 		}
 		const info = document.createElement("div");
