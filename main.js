@@ -2,6 +2,10 @@ document.getElementById('date').textContent = new Date().toLocaleDateString();
 const ICS_URL = "./calendar.ics";
 let current_day = "No School"
 let dayType
+
+// Keep track of the non-countdown title so we can restore it when there's no active period
+const BASE_TITLE = document.title || "Hlpr";
+
 function unfoldICS(raw) {
 	raw = raw.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
 	return raw.replace(/\n[ \t]/g, '');
@@ -74,58 +78,6 @@ function parseICS(raw) {
 	}
 	return events;
 }
-function normalizeSummary(summary) {
-	return (summary || "").trim().toLowerCase();
-}
-function isFinalsWeekSummary(summary) {
-	return normalizeSummary(summary).includes(FINALS_WEEK_TITLE.toLowerCase());
-}
-function isLastDaySummary(summary) {
-	const s = normalizeSummary(summary);
-	return s.includes("finals week") && s.includes("periods 3,4");
-}
-function isABDaySummary(summary) {
-	const normalized = normalizeSummary(summary);
-	return normalized === B_DAY_SUMMARY_KEY || normalized === A_DAY_SUMMARY_KEY;
-}
-function isScheduleSummary(summary) {
-	return isABDaySummary(summary) || isFinalsWeekSummary(summary);
-}
-function startOfDay(date) {
-	return new Date(date.getFullYear(), date.getMonth(), date.getDate());
-}
-function isSameDay(a, b) {
-	return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
-}
-function dateKey(date) {
-	return `${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
-}
-function findLastDayDate(events, todayStart) {
-	const lastDayEvents = events.filter(e => e.startDate && isLastDaySummary(e.summary));
-	if (!lastDayEvents.length) return null;
-	const pastEvents = lastDayEvents.filter(e => startOfDay(e.startDate) <= todayStart);
-	if (pastEvents.length) {
-		pastEvents.sort((a, b) => a.startDate - b.startDate);
-		return pastEvents[pastEvents.length - 1].startDate;
-	}
-	lastDayEvents.sort((a, b) => a.startDate - b.startDate);
-	return lastDayEvents[0].startDate;
-}
-function getLastDayTriggerTime(date) {
-	const lastDayTriggerTime = startOfDay(date);
-	lastDayTriggerTime.setHours(LAST_DAY_TRIGGER_HOUR, LAST_DAY_TRIGGER_MINUTE, 0, 0);
-	return lastDayTriggerTime;
-}
-function getSummerMode(now) {
-	if (!lastDayDate) return false;
-	if (dayType) return false;
-	const todayStart = startOfDay(now);
-	const lastDayStart = startOfDay(lastDayDate);
-	if (isSameDay(todayStart, lastDayStart)) {
-		return now >= getLastDayTriggerTime(lastDayDate);
-	}
-	return todayStart > lastDayStart;
-}
 function renderEvents(events){
 	const container = document.getElementById('events');
 	if (!container) return;
@@ -143,7 +95,8 @@ function renderEvents(events){
 		return a.startDate-b.startDate;
 	});
 	for(const e of events){
-		if (isScheduleSummary(e.summary)) {
+		if (e.summary == "B Day-Periods 5-8" || e.summary == "A Day-Periods 1-4") {
+			current_day = e.summary;
 			continue
 		}
 		const div = document.createElement('div');
@@ -185,32 +138,16 @@ async function loadEvents(){
 	const text = await res.text();
 	const events = parseICS(text);
 	const today = new Date();
-	const startOfToday = startOfDay(today);
-	const endOfToday = new Date(startOfToday);
-	endOfToday.setDate(endOfToday.getDate() + 1);
-	lastDayDate = findLastDayDate(events, startOfToday);
+	const startOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+	const endOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
 	const todaysEvents = events.filter(e => {
 		if(!e.startDate) return false;
 		return e.startDate >= startOfToday && e.startDate < endOfToday;
 	});
-	finalsWeekToday = todaysEvents.some(e => isFinalsWeekSummary(e.summary));
-	finalsScheduleOverride = finalsWeekToday ? getFinalsScheduleOverride(startOfToday) : null;
-	lastDayToday = lastDayDate ? isSameDay(startOfToday, startOfDay(lastDayDate)) : false;
-	dayType = undefined;
-	current_day = "No School";
-	if (finalsWeekToday) {
-		current_day = FINALS_WEEK_TITLE;
-		if (finalsScheduleOverride?.dayType) dayType = finalsScheduleOverride.dayType;
-	} else {
-		const abEvent = todaysEvents.find(e => isABDaySummary(e.summary));
-		if (abEvent) {
-			current_day = abEvent.summary;
-			dayType = normalizeSummary(current_day) === A_DAY_SUMMARY_KEY ? "A" : "B";
-		}
-	}
 	renderEvents(todaysEvents);
 }
-function buildStandardSchedule(base){
+function buildScheduleForToday(){
+	const base = new Date();
 	function t(h, m) {
 		const d = new Date(base);
 		d.setHours(h, m, 0, 0);
@@ -224,45 +161,12 @@ function buildStandardSchedule(base){
 		{ start: t(12,9), end: t(13,34), a: "Period 3", b: "Period 7" },
 		{ start: t(13,34), end: t(13,40), a: "Passing", b: "Passing" },
 		{ start: t(13,40), end: t(15,5), a: "Period 4", b: "Period 8" },
-		{ start: t(15,5), end: t(15,5), a: "school ends", b: "school ends", marker: true },
+		{ start: t(15,5), end: t(15,5), a: "school ends", b: "school ends" },
 	];
-}
-function buildFinalsSchedule(base, periods){
-	function t(h, m) {
-		const d = new Date(base);
-		d.setHours(h, m, 0, 0);
-		return d;
-	}
-	const earlyDismissalTime = t(FINALS_EARLY_DISMISSAL_HOUR, FINALS_EARLY_DISMISSAL_MINUTE);
-	return [
-		{ start: t(8,30), end: t(9,55), label: periods[0] },
-		{ start: t(9,55), end: t(10,4), label: "Passing" },
-		{ start: t(10,4), end: t(11,29), label: periods[1] },
-		{ start: t(11,29), end: earlyDismissalTime, label: "Lunch" },
-		{ start: earlyDismissalTime, end: earlyDismissalTime, label: "school ends", marker: true },
-	];
-}
-function getFinalsScheduleOverride(baseDate){
-	const key = dateKey(baseDate);
-	const override = FINALS_SCHEDULE_OVERRIDES[key];
-	if (!override) return null;
-	if (override.dayType === "B") {
-		return { schedule: buildStandardSchedule(baseDate), dayType: "B" };
-	}
-	if (override.periods) {
-		return { schedule: buildFinalsSchedule(baseDate, override.periods) };
-	}
-	return null;
-}
-function buildScheduleForToday(){
-	const base = new Date();
-	if (finalsScheduleOverride?.schedule) return finalsScheduleOverride.schedule;
-	return buildStandardSchedule(base);
 }
 function getActivePeriod(schedule) {
 	const now = new Date();
 	for (const period of schedule) {
-		if (period.marker) continue;
 		if (now >= period.start && now <= period.end) return period;
 	}
 	return null;
@@ -272,9 +176,6 @@ function getTimeLeft(period) {
 	if (now < period.start || now > period.end) return null
 	const totalMs = period.end - period.start
 	const leftMs = period.end - now
-	if (totalMs <= 0) {
-		return null
-	}
 	const percent = 1 - (leftMs / totalMs)
 	const totalSec = Math.floor(leftMs / 1000)
 	return {
@@ -283,110 +184,38 @@ function getTimeLeft(period) {
 		percent: Math.min(Math.max(percent, 0), 1) * 100
 	}
 }
-function getPeriodLabel(period) {
-	if (!period) return "";
-	if (period.label) return period.label;
-	if (dayType === "A") return period.a;
-	if (dayType === "B") return period.b;
-	return "";
-}
-function showSummerModal(show) {
-	const modal = document.getElementById("summer-modal");
-	if (!modal) return;
-	modal.classList.toggle("hidden", !show);
-}
-function launchConfetti() {
-	var count = 200;
-	var defaults = {
-	  origin: { y: 1.0 }
-	};
-	
-	function fire(particleRatio, opts) {
-	  confetti({
-	    ...defaults,
-	    ...opts,
-	    particleCount: Math.floor(count * particleRatio)
-	  });
-	}
-	
-	fire(0.25, {
-	  spread: 26,
-	  startVelocity: 55,
-	});
-	fire(0.2, {
-	  spread: 60,
-	});
-	fire(0.35, {
-	  spread: 100,
-	  decay: 0.91,
-	  scalar: 0.8
-	});
-	fire(0.1, {
-	  spread: 120,
-	  startVelocity: 25,
-	  decay: 0.92,
-	  scalar: 1.2
-	});
-	fire(0.1, {
-	  spread: 120,
-	  startVelocity: 45,
-	});
-}
-function maybeStartSummerCelebration(now) {
-	if (summerCelebrationStarted) return;
-	if (!lastDayDate) return;
-	if (!isSameDay(now, lastDayDate)) return;
-	if (now < getLastDayTriggerTime(lastDayDate)) return;
-	summerCelebrationStarted = true;
-	showSummerModal(true);
-	launchConfetti();
-}
 function updateActive() {
 	try{
-		const now = new Date()
-		lastDayToday = lastDayDate ? isSameDay(now, lastDayDate) : false;
-		maybeStartSummerCelebration(now);
-		showSummerModal(summerCelebrationStarted && lastDayToday);
-		const summerMode = getSummerMode(now);
+		const schedule = buildScheduleForToday()
+		const active = getActivePeriod(schedule)
 		const periodEl = document.getElementById("period")
 		const untilEl = document.getElementById("until")
 		const timeleftEl = document.getElementById("timeleft")
 		const progressEl = document.getElementById("progress")
 		const tlc = document.getElementById("timeleft-container")
-		const progressContainer = progressEl ? progressEl.parentElement : null;
 		if (!periodEl || !untilEl || !timeleftEl || !progressEl) return
-		if (summerMode) {
-			if (tlc) tlc.style.display = "";
-			if (progressContainer) progressContainer.style.display = "none";
-			periodEl.textContent = "School's out";
-			timeleftEl.textContent = "Have a great summer!";
-			untilEl.textContent = "";
-			document.title = BASE_TITLE;
-			return;
-		}
-		if (progressContainer) progressContainer.style.display = "";
-		const schedule = buildScheduleForToday()
-		const active = getActivePeriod(schedule)
 		if (tlc) tlc.style.display = ""
-		if (active) {
+		if (active && dayType) {
 			const i = schedule.indexOf(active) + 1
 			const next = schedule[i]
-			const label = getPeriodLabel(active)
-			const nextLabel = getPeriodLabel(next)
-			if (!label) {
-				tlc.style.display = "none"
-				document.title = BASE_TITLE
-				return;
+			let label = active.a
+			let nextLabel = next ? next.a : ""
+			if (dayType == "B") {
+				label = active.b
+				nextLabel = next ? next.b : ""
 			}
 			periodEl.textContent = label
 			untilEl.textContent = nextLabel ? ("until " + nextLabel + " (" + next.start.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit'}) + ")") : ""
 			const timeleft = getTimeLeft(active)
 			if (timeleft) {
+				const secondsStr = String(timeleft.seconds).padStart(2, '0')
 				timeleftEl.textContent = timeleft.minutes + "m " + timeleft.seconds + "s"
 				progressEl.style.width = timeleft.percent + "%"
+				document.title = `${timeleft.minutes}m ${secondsStr}s left`
 			}
 		} else {
 			tlc.style.display = "none"
+			document.title = BASE_TITLE
 		}
 	}catch(e){
 		console.error("updateActive crashed:", e)
@@ -395,6 +224,9 @@ function updateActive() {
 async function init(){
 	try{
 		await loadEvents()
+		if (current_day.startsWith("A Day")) dayType = "A"
+		else if (current_day.startsWith("B Day")) dayType = "B"
+		else dayType = undefined
 	}catch(err){
 		console.error(err);
 		const ev = document.getElementById('events')
