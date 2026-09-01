@@ -5,6 +5,9 @@ let dayType
 
 // Keep track of the non-countdown title so we can restore it when there's no active period
 const BASE_TITLE = document.title || "Hlpr";
+function isFinalsWeekEvent(summary) {
+	return /finals week/i.test(summary || '');
+}
 
 function unfoldICS(raw) {
 	raw = raw.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
@@ -95,6 +98,9 @@ function renderEvents(events){
 		return a.startDate-b.startDate;
 	});
 	for(const e of events){
+		if (isFinalsWeekEvent(e.summary)) {
+			continue
+		}
 		if (/\bA Day\b/i.test(e.summary) || /\bB Day\b/i.test(e.summary)) {
 			current_day = e.summary;
 			continue
@@ -142,7 +148,7 @@ async function loadEvents(){
 	const endOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
 	const todaysEvents = events.filter(e => {
 		if(!e.startDate) return false;
-		return e.startDate >= startOfToday && e.startDate < endOfToday;
+		return e.startDate >= startOfToday && e.startDate < endOfToday && !isFinalsWeekEvent(e.summary);
 	});
 	renderEvents(todaysEvents);
 }
