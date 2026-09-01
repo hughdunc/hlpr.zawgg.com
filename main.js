@@ -2,38 +2,6 @@ document.getElementById('date').textContent = new Date().toLocaleDateString();
 const ICS_URL = "./calendar.ics";
 let current_day = "No School"
 let dayType
-const A_DAY_SUMMARY = "A Day-Periods 1-4"
-const B_DAY_SUMMARY = "B Day-Periods 5-8"
-const A_DAY_SUMMARY_KEY = A_DAY_SUMMARY.toLowerCase()
-const B_DAY_SUMMARY_KEY = B_DAY_SUMMARY.toLowerCase()
-const FINALS_WEEK_TITLE = "Finals Week"
-const LAST_DAY_TITLE = "MIDDLE and HIGH School Last Day of School"
-const FINALS_SCHEDULE_OVERRIDES = {
-	"06-04": { dayType: "B" },
-	"06-05": { periods: ["Period 1", "Period 2"] },
-	"06-08": { periods: ["Period 3", "Period 4"] }
-}
-const LAST_DAY_TRIGGER_HOUR = 11
-const LAST_DAY_TRIGGER_MINUTE = 29
-const FINALS_EARLY_DISMISSAL_HOUR = 12
-const FINALS_EARLY_DISMISSAL_MINUTE = 0
-const CONFETTI_PIECE_COUNT = 140
-const CONFETTI_X_SPREAD = 320
-const CONFETTI_Y_BASE = 360
-const CONFETTI_Y_VARIANCE = 240
-const CONFETTI_CLEANUP_BUFFER_MS = 200
-const CONFETTI_MAX_DELAY_MS = 300
-const CONFETTI_BASE_DURATION_MS = 2800
-const CONFETTI_DURATION_VARIANCE_MS = 1200
-let finalsWeekToday = false
-let finalsScheduleOverride = null
-let lastDayDate = null
-let lastDayToday = false
-let summerCelebrationStarted = false
-
-// Keep track of the non-countdown title so we can restore it when there's no active period
-const BASE_TITLE = document.title || "Hlpr";
-
 function unfoldICS(raw) {
 	raw = raw.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
 	return raw.replace(/\n[ \t]/g, '');
@@ -414,14 +382,11 @@ function updateActive() {
 			untilEl.textContent = nextLabel ? ("until " + nextLabel + " (" + next.start.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit'}) + ")") : ""
 			const timeleft = getTimeLeft(active)
 			if (timeleft) {
-				const secondsStr = String(timeleft.seconds).padStart(2, '0')
 				timeleftEl.textContent = timeleft.minutes + "m " + timeleft.seconds + "s"
 				progressEl.style.width = timeleft.percent + "%"
-				document.title = `${timeleft.minutes}m ${secondsStr}s left`
 			}
 		} else {
 			tlc.style.display = "none"
-			document.title = BASE_TITLE
 		}
 	}catch(e){
 		console.error("updateActive crashed:", e)
