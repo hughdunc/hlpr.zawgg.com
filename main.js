@@ -95,7 +95,7 @@ function renderEvents(events){
 		return a.startDate-b.startDate;
 	});
 	for(const e of events){
-		if (e.summary == "B Day-Periods 5-8" || e.summary == "A Day-Periods 1-4") {
+		if (e.summary == "B Day Periods 5-8" || e.summary == "A Day Periods 1-4") {
 			current_day = e.summary;
 			continue
 		}
