@@ -5,6 +5,9 @@ let dayType
 
 // Keep track of the non-countdown title so we can restore it when there's no active period
 const BASE_TITLE = document.title || "Hlpr";
+function isFinalsWeekEvent(summary) {
+	return /finals week/i.test(summary || '');
+}
 
 function unfoldICS(raw) {
 	raw = raw.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
@@ -95,7 +98,10 @@ function renderEvents(events){
 		return a.startDate-b.startDate;
 	});
 	for(const e of events){
-		if (e.summary == "B Day Periods 5-8" || e.summary == "A Day Periods 1-4") {
+		if (isFinalsWeekEvent(e.summary)) {
+			continue
+		}
+		if (/\bA Day\b/i.test(e.summary) || /\bB Day\b/i.test(e.summary)) {
 			current_day = e.summary;
 			continue
 		}
@@ -142,7 +148,7 @@ async function loadEvents(){
 	const endOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
 	const todaysEvents = events.filter(e => {
 		if(!e.startDate) return false;
-		return e.startDate >= startOfToday && e.startDate < endOfToday;
+		return e.startDate >= startOfToday && e.startDate < endOfToday && !isFinalsWeekEvent(e.summary);
 	});
 	renderEvents(todaysEvents);
 }
@@ -154,14 +160,15 @@ function buildScheduleForToday(){
 		return d;
 	}
 	return [
-		{ start: t(8,30), end: t(9,55), a: "Period 1", b: "Period 5" },
-		{ start: t(9,55), end: t(10,4), a: "Passing", b: "Passing" },
-		{ start: t(10,4), end: t(11,29), a: "Period 2", b: "Period 6" },
-		{ start: t(11,29), end: t(12,9), a: "Lunch", b: "Lunch" },
-		{ start: t(12,9), end: t(13,34), a: "Period 3", b: "Period 7" },
-		{ start: t(13,34), end: t(13,40), a: "Passing", b: "Passing" },
-		{ start: t(13,40), end: t(15,5), a: "Period 4", b: "Period 8" },
-		{ start: t(15,5), end: t(15,5), a: "school ends", b: "school ends" },
+		{ start: t(8,30), end: t(9,57), a: "Period 1", b: "Period 5" },
+		{ start: t(9,57), end: t(10,3), a: "Passing", b: "Passing" },
+		{ start: t(10,3), end: t(11,30), a: "Period 2", b: "Period 6 (Life Class)" },
+		{ start: t(11,30), end: t(12,9), a: "Lunch", b: "Lunch" },
+		{ start: t(12,9), end: t(13,36), a: "Period 3", b: "Period 7" },
+		{ start: t(13,36), end: t(13,42), a: "Passing", b: "Passing" },
+		{ start: t(13,42), end: t(15,9), a: "Period 4", b: "Period 8" },
+		{ start: t(15,9), end: t(15,15), a: "Buses Depart", b: "Buses Depart" },
+		{ start: t(15,15), end: t(15,15), a: "School Ends", b: "School Ends" },
 	];
 }
 function getActivePeriod(schedule) {
