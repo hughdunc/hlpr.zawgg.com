@@ -176,8 +176,8 @@ function buildScheduleForToday(){
 		{ start: t(12,9), end: t(13,36), a: "Period 3", b: "Period 7" },
 		{ start: t(13,36), end: t(13,42), a: "Passing", b: "Passing" },
 		{ start: t(13,42), end: t(15,9), a: "Period 4", b: "Period 8" },
-		{ start: t(15,9), end: t(15,15), a: "Buses Depart", b: "Buses Depart" },
-		{ start: t(15,15), end: t(15,15), a: "School Ends", b: "School Ends" },
+		{ start: t(15,9), end: t(15,15), a: "School Ends", b: "School Ends" },
+		{ start: t(15,15), end: t(15,15), a: "Buses Depart", b: "Buses Depart" },
 	];
 }
 function getActivePeriod(schedule) {
